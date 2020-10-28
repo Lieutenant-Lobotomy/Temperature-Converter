@@ -38,12 +38,13 @@ namespace TempConversion
             {
                 MessageBox.Show("Please enter only numbers");
             }
-
-            float f = (k + 273.15f) * 9 / 5 + 32;
-            float c = k + 273;
-
-            txt_celsius.Text = c.ToString();
-            txt_fahrenheit.Text = f.ToString();
+            if (float.TryParse(txt_kelvin.Text, out k))
+            {
+                float f = (k + 273.15f) * 9 / 5 + 32;
+                float c = k + 273;
+                txt_celsius.Text = c.ToString();
+                txt_fahrenheit.Text = f.ToString();
+            }
   
         }
         private void convertFromFahrenheit()
@@ -60,11 +61,15 @@ namespace TempConversion
                 MessageBox.Show("Please enter only numbers");
             }
 
-            float c = 5f / 9 * (f - 32);
-            float k = c - 273;
-
-            txt_kelvin.Text = k.ToString();
-            txt_celsius.Text = c.ToString();
+            if (float.TryParse(txt_fahrenheit.Text, out f))
+            {
+                float c = 5f / 9 * (f - 32);
+                float k = c - 273;
+                txt_kelvin.Text = k.ToString();
+                txt_celsius.Text = c.ToString();
+            }
+            
+            
         }
         private void convertFromCelsius()
         {
@@ -78,12 +83,13 @@ namespace TempConversion
             {
                 MessageBox.Show("Please enter only numbers");
             }
-            
-            float f = (c * 9 / 5) + 32;
-            float k = c - 273.15f;
-
-            txt_kelvin.Text = k.ToString();
-            txt_fahrenheit.Text = f.ToString();
+            if (float.TryParse(txt_celsius.Text, out c))
+            {
+                float f = (c * 9 / 5) + 32;
+                float k = c - 273.15f;
+                txt_kelvin.Text = k.ToString();
+                txt_fahrenheit.Text = f.ToString();
+            }
         }
 
         private void btn_kelvin_Click(object sender, EventArgs e)
